@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加</title>
+    <script src="/public/js/jquery-3.2.1.js"></script>
+    <script src="/public/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="/public/css/bootstrap.css" type="text/css" />
+</head>
+<body>
+<div align="middle" class="page-header">
+    <h1>通讯录 <small>Address List</small></h1>
+</div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">错误提示</h3>
+        </div>
+        <div class="panel-body">{{message}}</div>
+        <div class="panel-footer">
+            {% if url %}
+            <a href="{{url}}" >点击这里跳转</a>
+            {% else %}
+            <a href="javascript:window.history.back();" >返回上一步</a>
+            {% endif %}
+
+        </div>
+    </div>
+</body>
+</html>

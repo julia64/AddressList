@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>通讯录</title>
+    <script src="/public/js/jquery-3.2.1.js"></script>
+    <script src="/public/js/bootstrap.js"></script>
+    <link rel="stylesheet" type="text/css" href="/public/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="/public/css/bootstrap.css" type="text/css" />
+
+</head>
+<body>
+    <div class="container-fluid">
+
+        <div align="middle" class="page-header">
+            <h1>通讯录 <small>Address List</small></h1>
+        </div>
+        <div class="btn-group btn-group-justified" role="group" aria-label="...">
+            <div class="btn-group btn-group-lg" role="group">
+                <a class="btn btn-default" href="/add">添加</a>
+            </div>
+        </div>
+        <table class="table table-hover table-striped">
+            <tr>
+                <th>姓名</th>
+                <th>电话</th>
+                <th>邮箱</th>
+                <th>操作</th>
+            </tr>
+
+            {% for da in data %}
+            <tr>
+                <td>{{da.name}}</td>
+                <td>{{da.tel}}</td>
+                <td>{{da.email}}</td>
+                <td>
+                    <a href="/edit?id={{da._id.toString()}}">修改</a>
+                    <a href="/delete?id={{da._id.toString()}}">删除</a>
+                </td>
+            </tr>
+            {% endfor %}
+
+        </table>
+
+        <nav>
+            <ul class="pager">
+                <li class="previous">
+                    {% if page <= 1%}
+                    <a href="javascript:;">没有上一页了</a>
+                    {% else %}
+                    <a href="/?category={{category}}&page={{page-1}}">上一页</a>
+                    {% endif %}
+                </li>
+                {% if pages > 0 %}
+                <li>
+                    <strong>{{page}} / {{pages}}</strong>
+                </li>
+                {% endif %}
+                <li class="next">
+                    {% if page >= pages%}
+                    <a href="javascript:;">没有下一页了</a>
+                    {% else %}
+                    <a href="/?category={{category}}&page={{page+1}}">下一页</a>
+                    {% endif %}
+                </li>
+            </ul>
+        </nav>
+
+
+    </div>
+</body>
+</html>
